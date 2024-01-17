@@ -1,0 +1,10 @@
+[Unit]
+Description=My Volume Control Service
+After=network.target
+
+[Service]
+ExecStart=/home/filo/Volume Control/HandTracking/venv/bin/python3 /home/filo/Volume Control/HandTracking/my_volume_control.
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

@@ -1,3 +1,0 @@
-Requirement:
-opencv
-mediapipe 

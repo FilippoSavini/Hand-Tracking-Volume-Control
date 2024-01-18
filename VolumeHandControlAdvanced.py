@@ -12,6 +12,7 @@ from subprocess import call
 import os
 import re
 
+
 wCam, hCam = 640, 480
 
 cap = cv2.VideoCapture(0)
@@ -75,7 +76,7 @@ while True:
             
             # Check fingers up
             fingers = detector.fingerUp()
-            #print(fingers)
+            
             
             # if pinky is down set volume
             if not fingers[4]:
@@ -85,23 +86,23 @@ while True:
                 cv2.circle(img, (lineInfo[4],lineInfo[5]), 15, (0,255,0), cv2.FILLED)
         
                 call(["amixer", "-D", "pulse", "sset", "Master", str(volume)+"%"])
-            # Drawings
-            #if 'DISPLAY' in os.environ:
-            # volume bar      
-            cv2.rectangle(img, (50,150), (85,400), (255,0,0), 3) 
-            cv2.rectangle(img, (50, int(volBar)), (85,400), (255,0,0), cv2.FILLED)
-            cv2.putText(img, f'{volume}%', (40,450), cv2.FONT_HERSHEY_PLAIN, 2, (255,0,0), 3)  # img, %, position, font, scale, color, thickness
-            cVol = get_volume()
-            cv2.putText(img, f'Volume Set: {int(cVol)}', (450,30), cv2.FONT_HERSHEY_PLAIN, 1, (255,0,0), 2) 
-            
-            # Frame rate
-            cTime = time.time()
-            fps = 1/(cTime-pTime)
-            pTime = cTime
-            #if 'DISPLAY' in os.environ:
-            cv2.putText(img, f'FPS: {int(fps)}', (20,30), cv2.FONT_HERSHEY_PLAIN, 1, (255,0,0), 2)  # img, fps, position, font, scale, color, thickness
-    
-        
+        # Drawings
+        #if 'DISPLAY' in os.environ:
+        # volume bar      
+        cv2.rectangle(img, (50,150), (85,400), (255,0,0), 3) 
+        cv2.rectangle(img, (50, int(volBar)), (85,400), (255,0,0), cv2.FILLED)
+        cv2.putText(img, f'{volume}%', (40,450), cv2.FONT_HERSHEY_PLAIN, 2, (255,0,0), 3)  # img, %, position, font, scale, color, thickness
+        # cVol = get_volume()
+        # cv2.putText(img, f'Volume Set: {int(cVol)}', (450,30), cv2.FONT_HERSHEY_PLAIN, 1, (255,0,0), 2) 
+
+        # Frame rate
+        cTime = time.time()
+        fps = 1/(cTime-pTime)
+        pTime = cTime
+        #if 'DISPLAY' in os.environ:
+        cv2.putText(img, f'FPS: {int(fps)}', (20,30), cv2.FONT_HERSHEY_PLAIN, 1, (255,0,0), 2)  # img, fps, position, font, scale, color, thickness
+
+
 
     cv2.imshow("Image", img)
     cv2.waitKey(1)

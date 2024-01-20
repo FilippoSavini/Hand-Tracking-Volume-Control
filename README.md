@@ -24,5 +24,31 @@ Description=My Volume Control Service
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/xvfb-run -a -s "-screen 0 640x480x24" /path/to/Hand
+ExecStart=/usr/bin/xvfb-run -a -s "-screen 0 640x480x24" /path/to/HandTracking/venv/bin/python3 /path/to/HandTracking/VolumeHandControlAdvanced.py
+Restart=always
+User=root
+
+[Install]
+WantedBy=multi-user.target
+```
+
+### Step 2: Reload systemd and Start the Service
+
+Run the following commands to reload systemd and start the service:
+
+```ini
+sudo systemctl daemon-reload
+sudo systemctl start my_volume_control.service
+```
+
+Now, your My Volume Control service should be up and running in the background.
+
+Note: Replace /path/to/HandTracking with the actual path to your HandTracking directory.
+
+
+
+
+
+
+
 

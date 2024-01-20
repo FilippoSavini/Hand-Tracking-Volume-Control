@@ -84,8 +84,9 @@ while True:
                 # volume.SetMasterVolumeLevelScalar(volume/100, None)
                 # Linux
                 cv2.circle(img, (lineInfo[4],lineInfo[5]), 15, (0,255,0), cv2.FILLED)
-        
-                call(["amixer", "-D", "pulse", "sset", "Master", str(volume)+"%"])
+                call(["amixer", "-c", "0", "set", "Master", str(volume)+"%"])
+
+                #call(["amixer", "-D", "pulse", "sset", "Master", str(volume)+"%"])
         # Drawings
         #if 'DISPLAY' in os.environ:
         # volume bar      

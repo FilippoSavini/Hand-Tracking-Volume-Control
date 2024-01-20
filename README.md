@@ -1,5 +1,5 @@
-# My Volume Control
-
+# Volume Control
+To control the volume with hand gestures via a webcam.
 ## Requirements
 
 ### Python Packages:
